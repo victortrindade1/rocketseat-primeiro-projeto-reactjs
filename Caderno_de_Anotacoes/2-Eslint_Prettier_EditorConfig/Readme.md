@@ -58,10 +58,11 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'airbnb',
-+   'prettier',
-+   'prettier/react',
++    'airbnb/base',
++    'eslint-config-prettier',
++    'airbnb',
++    'prettier',
++    'prettier/react',
   ],
   globals: {
     Atomics: 'readonly',
