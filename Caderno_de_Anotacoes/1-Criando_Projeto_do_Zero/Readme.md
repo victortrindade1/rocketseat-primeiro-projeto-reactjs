@@ -28,7 +28,7 @@ Vou configurar o eslint do zero.
     ],
 ```
 
-## primeiro-projeto-reactjs/public/index.html
+## public/index.html
 
 Vou tirar a tag `link manifest` pois só é usado para
 `Progressive Web App (PWA)`.
@@ -45,9 +45,6 @@ Vou tirar a tag `link manifest` pois só é usado para
 
     <title>React App</title>
 ```
-
-Tb deletei o arquivo `primeiro-projeto-reactjs/public/manifest.json` pois é para
-PWA.
 
 ## Delete arquivos que não serão usados neste app
 
