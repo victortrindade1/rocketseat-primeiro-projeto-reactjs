@@ -50,7 +50,7 @@ export default function Main() {
 }
 ```
 
-## Condicional no styled components
+## Exemplo 2 - Condicional no styled components
 
 Com o styled components, podemos criar JS a fundo dentro do CSS. Podemos criar
 funções, acessar props do component, de tudo!
