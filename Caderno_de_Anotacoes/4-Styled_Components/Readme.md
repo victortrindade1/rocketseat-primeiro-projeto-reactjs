@@ -15,7 +15,7 @@ podem ser passadas da mesma forma como o SASS. Se vc não entendeu, veja a tag
 
 ## Exemplo 1 - estilizando uma tag
 
-No exemplo a seguir, estilizaremos uma tag <h1>.
+No exemplo a seguir, estilizaremos uma tag `<h1>`.
 
 ### src/pages/Main/styles.js
 
