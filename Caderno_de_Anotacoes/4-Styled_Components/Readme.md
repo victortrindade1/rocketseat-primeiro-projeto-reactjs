@@ -6,8 +6,13 @@ melhor, pois garante que será executado apenas naquele componente.
 
 Algumas tags HTML passam a ser Components, e um `styles.js` possui o css. Nem
 toda tag é transformada em component, somente as q forem containers. As outras
-podem ser passadas da mesma forma como o SASS. Se vc não entendeu, veja a tag
-<span> do exemplo a seguir.
+podem ser passadas da mesma forma como o SASS, por encadeamento.
+
+> Se vc encadear mais de 2 tags, vc deve criar um novo Styled Component, pois
+> senão fica confuso. Criar um novo Styled Component isola o css e facilita a
+> visualização.
+
+Se vc não entendeu, veja a tag `<span>` do exemplo a seguir.
 
 `yarn add styled-components`
 
@@ -74,4 +79,33 @@ export const Title = styled.h1`
   font-size: 24px;
 -  color: #7159c1;
 +  color: ${props => (props.error ? 'red' : '#7159c1')};
+```
+
+## Exemplo 3 - Passando atributo da tag dentro do CSS
+
+Se a tag for uma Styled Component, vc pode gerenciar os atributos dentro do
+`style`.
+
+Component Foobar:
+
+```diff
+import React from 'react';
+
+import { Foobar } from './styles';
+
+export default function Foo() {
+-  return <Foobar type="submit">Foobar Button</Foobar>
++  return <Foobar>Foobar Button</Foobar>
+}
+```
+
+Style de Foobar:
+
+```diff
+import styled from 'styled-components';
+
+- export const Foobar = styled.button` ... CSS aqui ... `;
++ export const Foobar = styled.button.attrs({
++   type: 'submit',
++ })` ... CSS aqui ... `;
 ```

@@ -1,3 +1,44 @@
+# Estilizando a página Main
+
+## React Icons
+
+Existe uma lib pra react com todas as icons, incluindo do `font-awesome` e todas
+as outras.
+
+`yarn add react-icons`
+
+## src/pages/Main/index.js
+
+```javascript
+import React from 'react';
+
+import { FaGithubAlt, FaPlus } from 'react-icons/fa';
+
+import { Container, Form, SubmitButton } from './styles';
+
+export default function Main() {
+  return (
+    <Container>
+      <h1>
+        <FaGithubAlt />
+        Repositórios
+      </h1>
+
+      <Form onSubmit={() => {}}>
+        <input type="text" placeholder="Adicionar repositório" />
+
+        <SubmitButton disabled>
+          <FaPlus color="#fff" size={14} />
+        </SubmitButton>
+      </Form>
+    </Container>
+  );
+}
+```
+
+## src/pages/Main/styles.js
+
+```javascript
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -47,3 +88,4 @@ export const SubmitButton = styled.button.attrs({
   justify-content: center;
   align-items: center;
 `;
+```
