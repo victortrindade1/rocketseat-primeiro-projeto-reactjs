@@ -1,5 +1,7 @@
 # Adicionando repositórios
 
+## Axios
+
 Aqui vamos consumir nossa primeira API. Vamos interagir com a API do Github.
 Esta API fornece na response todos os dados de um repositório específico que vc
 enviar pela request. Estes dados vamos salvar num state.
@@ -90,7 +92,13 @@ import { Container, Form, SubmitButton } from './styles';
 
 -        <Form onSubmit={() => {}}>
 +        <Form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Adicionar repositório" />
+-          <input type="text" placeholder="Adicionar repositório" />
++          <input
++            type="text"
++            placeholder="Adicionar repositório"
++            value={newRepo}
++            onChange={this.handleInputChange}
++          />
 
 -          <SubmitButton disabled>
 -            <FaPlus color="#fff" size={14} />
@@ -158,7 +166,8 @@ export const Form = styled.form`
 +   }
 + `;
 
-export const SubmitButton = styled.button.attrs({
+- export const SubmitButton = styled.button.attrs({
++ export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
 + disabled: props.loading,
 })`
