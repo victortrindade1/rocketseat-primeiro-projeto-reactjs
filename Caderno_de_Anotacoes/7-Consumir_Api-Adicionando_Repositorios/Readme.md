@@ -71,7 +71,9 @@ import { Container, Form, SubmitButton } from './styles';
 +
 +    const response = await api.get(`/repos/${newRepo}`);
 +
-+    const data = response.data.full_name;
++    const data = {
++      name: response.data.full_name,
++    };
 +
 +    this.setState({
 +      repositories: [...repositories, data],
