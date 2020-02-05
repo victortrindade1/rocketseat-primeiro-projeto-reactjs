@@ -94,7 +94,7 @@ import React from 'react';
 import { Foobar } from './styles';
 
 export default function Foo() {
--  return <Foobar type="submit">Foobar Button</Foobar>
+-  return <Foobar type="submit" loading={loading}>Foobar Button</Foobar>
 +  return <Foobar>Foobar Button</Foobar>
 }
 ```
@@ -105,7 +105,8 @@ Style de Foobar:
 import styled from 'styled-components';
 
 - export const Foobar = styled.button` ... CSS aqui ... `;
-+ export const Foobar = styled.button.attrs({
++ export const Foobar = styled.button.attrs(props => ({
 +   type: 'submit',
-+ })` ... CSS aqui ... `;
++   disabled: props.loading,
++ }))` ... CSS aqui ... `;
 ```
