@@ -11,5 +11,7 @@ na intellisense:
 - `rfc` (React Functional Component)
   - Produz uma Function
 - `rrc` (React Redux Component)
+- `styled-react`
+  - Produz uma const de um container estilizado
 
-Dentre outros... para saber, só digite `rc` e aparece tudo. Bjs.
+Dentre outros...
