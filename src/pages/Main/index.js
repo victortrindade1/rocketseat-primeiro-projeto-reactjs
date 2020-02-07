@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -85,7 +86,18 @@ export default class Main extends Component {
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <a href="">Detalhes</a>
+              {/*
+              OBS 1: Se simplesmente colocasse <Link to="/repository">Detalhes</Link>
+              já navegaria, mas além de navegar, quero q mostre o nome do
+              repositório na url.
+              OBS 2: O encodeURIComponent() transforma as barras "/" da url em
+              "%2F". É necessário essa transformação pq na real as barras são
+              pra dividir pastas. Qnd eu quiser aproveitar essa informação, vou
+              ter q usar um decodeURIComponent() para voltar para barra.
+              */}
+              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                Detalhes
+              </Link>
             </li>
           ))}
         </List>
