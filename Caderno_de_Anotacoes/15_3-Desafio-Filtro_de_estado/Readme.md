@@ -52,7 +52,7 @@ export default class Repository extends Component {
         params: {
 -          state: 'open',
 +          state: filters.find(f => f.active).state,
-          per_page: 20,
+          per_page: 5,
         },
       }),
     ]);

@@ -1,10 +1,22 @@
+# Paginação
+
+Adicione paginação nas issues listadas no detalhe do repositório. A API do Github lista no máximo 30 issues por página e você pode controlar o número da página atual por um parâmetro no endereço da requisição:
+
+`https://api.github.com/repos/rocketseat/unform/issues?page=2`
+
+Adicione apenas um botão de próxima página e página anterior. O botão de página anterior deve ficar desativado na primeira página.
+
+## src/pages/Repository/index.js
+
+```diff
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, IssueFilter, PageActions } from './styles';
+- import { Loading, Owner, IssueList, IssueFilter } from './styles';
++ import { Loading, Owner, IssueList, IssueFilter, PageActions } from './styles';
 
 export default class Repository extends Component {
   state = {
@@ -18,7 +30,7 @@ export default class Repository extends Component {
       { state: 'closed', label: 'Fechadas', active: false },
     ],
     filterIndex: 0,
-    page: 1,
++    page: 1,
   };
 
   // é assíncrono pois vai ter consulta request
@@ -58,7 +70,8 @@ export default class Repository extends Component {
 
   loadIssues = async () => {
     const { match } = this.props;
-    const { filters, filterIndex, page } = this.state;
+-    const { filters, filterIndex } = this.state;
++    const { filters, filterIndex, page } = this.state;
 
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -66,7 +79,7 @@ export default class Repository extends Component {
       params: {
         state: filters[filterIndex].state,
         per_page: 5,
-        page,
++        page,
       },
     });
 
@@ -78,23 +91,24 @@ export default class Repository extends Component {
     this.loadIssues();
   };
 
-  handlePage = async action => {
-    const { page } = this.state;
-    await this.setState({
-      page: action === 'back' ? page - 1 : page + 1,
-    });
-    this.loadIssues();
-  };
++  handlePage = async action => {
++    const { page } = this.state;
++    await this.setState({
++      page: action === 'back' ? page - 1 : page + 1,
++    });
++    this.loadIssues();
++  };
 
   render() {
-    const {
-      repository,
-      issues,
-      loading,
-      filterIndex,
-      filters,
-      page,
-    } = this.state;
+-    const { repository, issues, loading, filterIndex, filters } = this.state;
++    const {
++      repository,
++      issues,
++      loading,
++      filterIndex,
++      filters,
++      page,
++    } = this.state;
 
     if (loading) {
       return <Loading>Carregando</Loading>;
@@ -137,19 +151,19 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
-        <PageActions>
-          <button
-            type="button"
-            disabled={page < 2}
-            onClick={() => this.handlePage('back')}
-          >
-            Anterior
-          </button>
-          <span>Página {page}</span>
-          <button type="button" onClick={() => this.handlePage('next')}>
-            Próximo
-          </button>
-        </PageActions>
++        <PageActions>
++          <button
++            type="button"
++            disabled={page < 2}
++            onClick={() => this.handlePage('back')}
++          >
++            Anterior
++          </button>
++          <span>Página {page}</span>
++          <button type="button" onClick={() => this.handlePage('next')}>
++            Próximo
++          </button>
++        </PageActions>
       </Container>
     );
   }
@@ -167,3 +181,27 @@ Repository.propTypes = {
     }),
   }).isRequired,
 };
+```
+
+## src/pages/Repository/styles.js
+
+```diff
++ export const PageActions = styled.div`
++   padding-top: 15px;
++   display: flex;
++   justify-content: space-between;
++   align-items: center;
++   font-size: 12px;
++   button {
++     transition: opacity 0.25s ease-out;
++     border-radius: 4px;
++     outline: 0;
++     border: 0;
++     padding: 8px;
++     &:disabled {
++       opacity: 0.35;
++       cursor: not-allowed;
++     }
++   }
++ `;
+```
