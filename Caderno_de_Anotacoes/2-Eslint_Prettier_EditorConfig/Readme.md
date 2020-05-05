@@ -99,3 +99,5 @@ Crie o arquivo `.prettierrc` no root.
   "trailingComma": "es5"
 }
 ```
+
+> O prettier começou a dar um bug junto com o .editorconfig. As aspas simples se tornam aspas duplas e o eslint reclama. Pra resolver isto, vai nas Settings do VSCode -> Prettier -> Single Quotes in JSX
