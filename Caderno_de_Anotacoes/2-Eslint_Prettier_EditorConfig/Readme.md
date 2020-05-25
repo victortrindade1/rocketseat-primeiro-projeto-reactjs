@@ -49,7 +49,7 @@ Instale estas tetas:
 
 `yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D`
 
-## .eslintrc.js
+## .eslintrc.js (Jeito 1)
 
 ```diff
 module.exports = {
@@ -108,6 +108,51 @@ O curso ao final disponibiliza umas `rules` bem mais completas. Use as debaixo:
 +    'react-hooks/rules-of-hooks': 'error',
 +    'react-hooks/exhaustive-deps': 'warn',
   }
+```
+
+## .eslintrc.js (Jeito 2)
+
+Esse jeito foi o sugerido pelo professor no final do curso. Tem umas coisas
+diferentes. Confesso q não sei qual o melhor.
+
+```javascript
+module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+  },
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    __DEV__: true,
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['react', 'jsx-a11y', 'import', 'react-hooks', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    'import/prefer-default-export': 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'react/jsx-one-expression-per-line': 'off',
+    'global-require': 'off',
+    'react-native/no-raw-text': 'off',
+    'no-param-reassign': 'off',
+    'no-underscore-dangle': 'off',
+    camelcase: 'off',
+    'react/state-in-constructor': ['off', 'always'],
+    'no-console': ['error', { allow: ['tron'] }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+};
 ```
 
 ## .prettierrc
