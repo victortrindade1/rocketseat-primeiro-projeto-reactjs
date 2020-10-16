@@ -31,7 +31,7 @@ Fonte: https://www.notion.so/Padr-es-de-projeto-com-ESLint-Prettier-e-EditorConf
 
 `yarn add eslint@6.8.0 -D`
 
-> Acima dá erro
+> Acima desta versão dá erro
 
 Inicie o eslint: `yarn eslint --init`
 
