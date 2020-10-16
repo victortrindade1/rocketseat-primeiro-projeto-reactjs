@@ -27,7 +27,11 @@ charset = utf-8
 
 ## Eslint e Prettier
 
-`yarn add eslint -D`
+Fonte: https://www.notion.so/Padr-es-de-projeto-com-ESLint-Prettier-e-EditorConfig-0b57b47a24724c859c0cf226aa0cc3a7
+
+`yarn add eslint@6.8.0 -D`
+
+> Acima dá erro
 
 Inicie o eslint: `yarn eslint --init`
 
